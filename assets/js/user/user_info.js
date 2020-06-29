@@ -40,7 +40,9 @@ $(function () {
         e.preventDefault()
         $.ajax({
             type: 'POST',
-            url: '/my/updatePwd',
+
+            url: '/my/userinfo',
+
             //几种常用获取表单元素的 value 值
             //  * $('.layui-form [name=username]').val()   -- 传统方式取 value 值
             //  * $(this).serialize() --  更方便一些(会自动剔除具有 disabled 属性的value值)
@@ -49,7 +51,9 @@ $(function () {
             //ATTENTION: 这里有个问题,后端的接口写的是id从token字符串里解析,那么就不需要从页面获取id这个key和value值作为数据传给后端,如果后端的接口是说从req.body.id获取id值,那么就必须从页面获取到name为id的input输入框的值
             //这里用serialize()方法提交的数据是urlencoded格式的,后端直接用自带的解析中间件搞定,我们需要给后端提供的是三个name分别为id,nickname,email的input输入框的值,这里要给username的输入框设置disabled属性,可以在提交请求数据的时候自动忽略
             success: function (res) {
-               // console.log(res)
+
+                console.log(res)
+
                 if (res.status !== 0) {
                     return layer.msg("更新用户信息失败")
                 }
@@ -59,16 +63,6 @@ $(function () {
             }
         })
     })
-
-
-
-
-
-
-
-
-
-
 
 
 

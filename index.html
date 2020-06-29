@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 第四步:导入第三方图标库,以及layui自带的图标,给菜单项添加图标 -->
+    <link rel="stylesheet" href="/assets/fonts/iconfont.css" />
+
+    <link rel="stylesheet" href="./assets/lib/layui/css/layui.css">
+    <!--
+       第五步:导入自己的样式表,并添加css样式
+     -->
+    <link rel="stylesheet" href="./assets/css/index.css">
+</head>
+
+
+<!--
+   第一步:搭建页面结构
+ -->
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">
+                <img src="./assets/images/logo.png" alt="">
+            </div>
+
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;" class="userinfo">
+                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img" />
+                        <span class="text-avatar">A</span>
+                        个人中心
+                      </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">基本资料</a></dd>
+                        <dd><a href="">更换头像</a></dd>
+                        <dd><a href="">重置密码</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="javascript:;" id="btnLogout"><span class="iconfont icon-tuichu"></span>退出</a></li>
+            </ul>
+        </div>
+        <!--
+   第二步:修改侧边栏结构
+ -->
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <div class="userinfo">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img" />
+                    <span class="text-avatar">A</span>
+                    <span id="welcome">欢迎 ***</span>
+                </div>
+                <!-- 渲染图片头像和文字头像,后面会做出操作选择一个头像展示 -->
+                <ul class="layui-nav layui-nav-tree" lay-filter="test" lay-shrink='all'>
+                    <!--第三步:
+                       给ul添加lay-shrink='all'属性值保证一次只有一个侧边栏展开
+                     -->
+                    <li class="layui-nav-item layui-this">
+
+                        <a class="" href="/home/dashboard.html" target="fm">
+                            <span class="iconfont icon-home"></span>
+                            首页
+                        </a>
+
+                    </li>
+                    <!--
+                       第六步:给页面的主体iframe区域指定默认的页面为首页,路径为/home/dashboard.html,target为iframe的name值'fm',并给li元素添加layui-this属性值,设置为默认页面
+                       并强制删除a链接的CSS3的动画,在CSS里写入a {transition: none !important;}
+                     -->
+                    <li class="layui-nav-item">
+                        <a href="javascript:;"><span class="iconfont icon-home"></span>文章管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;">
+                                    <i class="layui-icon layui-icon-app"></i>
+                                    文章类别</a></dd>
+                            <dd><a href="javascript:;">
+                                    <i class="layui-icon layui-icon-app"></i>
+                                    文章列表
+                                </a>
+                            </dd>
+                            <dd><a href="javascript:;"><i class="layui-icon layui-icon-app"></i>发布文章</a></dd>
+
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item"><a href="javascript:;">
+                        <!-- <i class="layui-icon layui-icon-username"></i>
+                            这里图标用的标签不一样,自带的样式也不一样
+                        -->
+                        <span class="iconfont icon-user"></span>
+                        个人中心</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="/user/user_info.html" target="fm"><i class="layui-icon layui-icon-app"></i>基本资料</a></dd>
+                            <dd><a href="javascript:;"><i class="layui-icon layui-icon-app"></i>更换头像</a></dd>
+                            <dd><a href="/user/user_pwd.html" target="fm"><i class="layui-icon layui-icon-app"></i>重置密码</a></dd>
+
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <!--
+               刚开始打开首页,iframe没有直接打开默认的页面是因为下面的src里没有写首页的路径
+             -->
+            <iframe name="fm" src="./home/dashboard.html"
+            frameborder="0"></iframe>
+        </div>
+
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            © layui.com - 底部固定区域
+        </div>
+    </div>
+
+    <!-- 导入 Layui 的JS文件 -->
+    <script src="./assets/lib/layui/layui.all.js"></script>
+    <!-- 导入 jQuery -->
+    <script src="/assets/lib/jquery.js"></script>
+    <!-- 导入自己封装的 baseAPI -->
+    <script src="/assets/js/baseAPI.js"></script>
+    <!-- 导入自己的 js 文件 -->
+    <script src="/assets/js/index.js"></script>
+</body>
+
+
+</html>

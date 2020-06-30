@@ -76,7 +76,7 @@ function getUserInfo() {
         //     Authorization: localStorage.getItem('token') || ''
         // },
         success: function (res) {
-            console.log(res)
+           // console.log(res)
             //data: {id: 1071, username: "lili", nickname: "", email: "", user_pic: null}
             //message: "获取用户基本信息成功！"
             //status: 0
@@ -101,11 +101,12 @@ function renderAvatar(res) {
 
     if (data.user_pic !== null) {
         $('.layui-nav-img').attr('src', data.user_pic)
-        $('.text-avatar').hide
+        //ATTENTION: 调用xx方法记得加()
+        $('.text-avatar').hide()
     } else {
-        $('.layui-nav-img').hide()
         var first = name[0].toUpperCase()
         $('.text-avatar').html(first).show()
+        $('.layui-nav-img').hide()
     }
 }
 

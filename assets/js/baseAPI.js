@@ -4,7 +4,6 @@
 $.ajaxPrefilter(function (options) {
   // 在发起真正的 Ajax 请求之前，统一拼接请求的根路径
   options.url = 'http://127.0.0.1' + options.url
-
    // options.url = 'http://ajax.frontend.itheima.net' + options.url
   if (options.url.includes('/my')) {
     options.headers = {
@@ -15,18 +14,6 @@ $.ajaxPrefilter(function (options) {
       // options.beforeSend = function (xhr){
       //   xhr.setRequestHeader('Authorization',localStorage.getItem('token'))
       // }
-
-  // options.url = 'http://ajax.frontend.itheima.net' + options.url
-  // if (options.url.includes('/my')) {
-  //   // options.headers = {
-  //   // Authorization: localStorage.getItem('token')
-  // //}
-  //     //或者可以用beforeSend方法
-
-  //     options.beforeSend = function (xhr){
-  //       xhr.setRequestHeader('Authorization',localStorage.getItem('token'))
-  //     }
-
 
   }
   // 统一为有权限的接口，设置 headers 请求头
